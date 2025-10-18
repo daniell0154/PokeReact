@@ -40,3 +40,9 @@
 .read-the-docs {
   color: #888;
 }
+
+body {
+  background-image: url('https://wallpaperbat.com/img/8619976-pokedex-wallpaper-free-pokedex.jpg');
+  background-size: cover;
+  background-position: center;
+}

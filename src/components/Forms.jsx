@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from "react";
 import "./Forms.css";
 
-function PokemonForm() {
+function Forms() {
   const [form, setForm] = useState({
     nome: "",
     tipo: "",
     descricao: "",
-    poder: 50,
+    poder: "",
   });
   const [errors, setErrors] = useState({});
   const [pokemons, setPokemons] = useState([]);
   const [successMsg, setSuccessMsg] = useState("");
 
-  // Carrega Pokémons do localStorage
   useEffect(() => {
     const dados = JSON.parse(localStorage.getItem("pokemons")) || [];
     setPokemons(dados);
@@ -33,7 +32,7 @@ function PokemonForm() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setForm({ ...form, [name]: name === "poder" ? +value : value });
+    setForm({ ...form, [name]: value });
   };
 
   const validate = () => {
@@ -50,7 +49,9 @@ function PokemonForm() {
     const errs = validate();
     if (Object.keys(errs).length) return setErrors(errs);
 
-    const novoPokemon = { ...form, id: Date.now() };
+    const novoId = pokemons.length > 0 ? pokemons[pokemons.length - 1].id + 1 : 1;
+
+    const novoPokemon = { ...form, id: novoId };
     setPokemons([...pokemons, novoPokemon]);
     setForm({ nome: "", tipo: "", descricao: "", poder: 50 });
     setErrors({});
@@ -89,11 +90,13 @@ function PokemonForm() {
           value={form.descricao}
           onChange={handleChange}
           rows={3}
-          placeholder="Breve descrição do Pokémon..."
+          placeholder="Descrição do Pokémon (máximo de 300 caracteres)"
         />
         {errors.descricao && <div className="error">{errors.descricao}</div>}
 
-        <label>Poder ({form.poder})</label>
+        <label>
+          Poder {form.poder !== "" ? `(${form.poder})` : ""}
+        </label>
         <input
           type="number"
           name="poder"
@@ -102,6 +105,7 @@ function PokemonForm() {
           value={form.poder}
           onChange={handleChange}
           className="number-input"
+          placeholder="Ex: 80"
         />
 
 
@@ -117,7 +121,7 @@ function PokemonForm() {
               <li key={p.id}>
                 <strong>{p.nome}</strong> — {tipos.find(t => t.value === p.tipo)?.label || p.tipo}
                 <div>{p.descricao}</div>
-                <div>Poder: {p.poder}</div>
+                {p.poder !== null && <div>Poder: {p.poder}</div>}
               </li>
             ))}
           </ul>
@@ -127,4 +131,4 @@ function PokemonForm() {
   );
 }
 
-export default PokemonForm;
+export default Forms;
