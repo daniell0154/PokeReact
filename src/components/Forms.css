@@ -43,8 +43,8 @@ input, select, textarea {
 }
 
 input:focus, select:focus, textarea:focus {
-  border-color: #ffeb3b;
-  box-shadow: 0 0 5px #ffeb3b;
+  border-color: #095FA8;
+  box-shadow: 0 0 5px #095FA8;
 }
 
 .number-input { 
@@ -52,17 +52,18 @@ input:focus, select:focus, textarea:focus {
 }
 
 button {
-  padding: 12px;
+  padding: 6px 40px;
   border-radius: 50px;
   border: 3px solid #333;
   font-weight: bold;
   font-size: 1.1em;
-  background: #ff0000;
+  background: #e53935;
   color: #fff;
   cursor: pointer;
   align-self: center;
   transition: all 0.3s;
 }
+
 
 button:hover {
   background: #ff6666;
@@ -83,16 +84,19 @@ button:hover {
 
 .lista {
   margin-top: 30px;
-  background: #1b1b1b;
-  border-radius: 20px;
-  padding: 15px;
-  border: 3px solid #333;
+  background: linear-gradient(145deg, #fafafa, #f1f1f1);
+  border-radius: 25px;
+  padding: 25px;
+  border: 3px solid #ccc;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 .lista h3 {
   text-align: center;
-  color: #ffeb3b;
-  text-shadow: 1px 1px #000;
+  color: #e53935; 
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 1.8em;
+  margin-bottom: 15px;
 }
 
 .lista ul { 
@@ -101,13 +105,18 @@ button:hover {
 }
 
 .lista li {
-  background: linear-gradient(to bottom, #f0f0f0, #dcdcdc);
+  background: linear-gradient(to bottom, #e3f2fd, #bbdefb);
   border-radius: 15px;
-  margin-bottom: 12px;
-  padding: 12px;
-  border: 2px solid #333;
-  color: #000;
-  transition: transform 0.2s;
+  margin-bottom: 15px;
+  padding: 15px;
+  border: 2px solid #bbb;
+  color: #222;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.lista li:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .lista strong { 
@@ -123,12 +132,21 @@ button:hover {
 }
 
 .lista li div.descricao { 
-  color: #333; 
-  margin-top: 5px; 
+  color: #555; 
+  margin-top: 8px; 
+  font-size: 0.95em;
 }
 
 .lista li div.poder { 
   font-weight: bold; 
-  color: #ff9800; 
-  margin-top: 5px; 
+  color: #fbc02d; 
+  margin-top: 8px; 
+  font-size: 1em;
+}
+
+input[name="poder"] {
+  width: 200px;
+  font-size: 1.2em;
+  align-self: center;
+  text-align: center;
 }
